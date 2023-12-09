@@ -24,3 +24,8 @@ main {
     background-color: var(--blue-color);
     color: whitesmoke;
 }
+
+#current-forecast-header h3 ,
+#current-forecast-header i {
+    display:inline;
+}
