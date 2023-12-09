@@ -1,0 +1,26 @@
+:root {
+    --blue-color: #87a5e6;
+}
+
+#title { 
+    height: 80px;
+    padding: 15px 0;
+    background-image: linear-gradient(var(--blue-color), whitesmoke);
+}
+
+main { 
+    padding: 0px 20px;
+}
+
+#search-container {
+    border-bottom: 1px grey solid;
+}
+
+#city-content-container {
+    border: 1px black solid;
+}
+
+#search-btn { 
+    background-color: var(--blue-color);
+    color: whitesmoke;
+}
