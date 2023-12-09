@@ -26,13 +26,15 @@
             <div id="search-container" class="d-flex flex-column py-4">
                 <h2>Search for a City:</h2>
                 <input type="search" id="city-search" name="q" class="my-1" />
-                <button id="search-btn" class="my-1">Search</button>
+                <button id="search-btn" class="my-1" onclick="fetchCity()">Search</button>
             </div>
             <div id="search-history-container">
                 <ul id="search-history"></ul>
             </div>
         </aside>
         <div id="city-content-container" class="col-8">
+            <section id="current-forecast"></section>
+            <section id="future-forcast"></section>
         </div>
     </main>
     <script src="Assets/js/script.js"></script>
