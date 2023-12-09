@@ -8,10 +8,6 @@
     background-image: linear-gradient(var(--blue-color), whitesmoke);
 }
 
-main { 
-    padding: 0px 20px;
-}
-
 #search-container {
     border-bottom: 1px grey solid;
 }
