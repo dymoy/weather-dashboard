@@ -29,15 +29,16 @@
         <aside id="aside-container" class="col-2 mx-2 my-4">
             <div id="search-container" class="d-flex flex-column pb-3">
                 <h2>Search for a City:</h2>
-                <input type="search" id="city-search" name="q" class="my-1" />
-                <button id="search-btn" class="my-1" onclick="fetchCity()">Search</button>
+                <input type="search" id="city-search" placeholder="e.g. Los Angeles" name="q" class="my-1" />
+                <button id="search-btn" class="my-1" onclick="queryCity()">Search</button>
             </div>
             <div id="search-history-container">
+                <h2>Search History: </h2>
                 <ul id="search-history"></ul>
             </div>
         </aside>
         <div id="city-content-container" class="col-8 mx-2 my-4">
-            <section id="current-forecast">
+            <section id="current-forecast" class="mb-3 px-2">
                 <header id="current-forecast-header" class="mt-2 mb-3">
                     <h3 id="city-name"></h2>
                     <h3 id="date"></h2>
@@ -49,7 +50,10 @@
                     <p id="humidity"></p>
                 </body>
             </section>
-            <section id="future-forcast"></section>
+            <section id="future-forecast">
+                <h4>5-Day Forecast:</h4>
+                <div id="future-forecast-container" class="d-flex flex-row justify-content-between"></div>
+            </section>
         </div>
     </main>
     <script src="Assets/js/script.js"></script>

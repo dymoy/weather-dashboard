@@ -12,7 +12,8 @@
     border-bottom: 1px grey solid;
 }
 
-#city-content-container {
+#current-forecast {
+    height: 180px;
     border: 1px black solid;
 }
 
@@ -25,3 +26,13 @@
 #current-forecast-header i {
     display:inline;
 }
+
+.forecast-card {
+    /* min-width: 180px; */
+    padding: 15px;
+}
+/* 
+.forecast-card p,
+.forecast-card i {
+    display: block;
+} */
