@@ -10,8 +10,9 @@ var currentTemp = $("#temp");
 var currentWind = $("#wind");
 var currentHumidity = $("#humidity");
 
-var futureForecast = $("#future-forecast-container");
-var searchHistory = $("#search-history-container");
+var currentForecastDiv = $("#current-forecast");
+var futureForecastDiv = $("#future-forecast-container");
+var searchHistoryList = $("#search-history");
 
 // This function returns the class name to add to <i> to show the current weather condition
 function getWeatherClass(code) {
@@ -39,8 +40,27 @@ function getWeatherClass(code) {
     return result;
 }
 
-// 
-function getWeatherAPI(queryURL) {
+function addToSearchHistory(cityName, dayArray) {
+    // TODO: Prevent duplicate button from creating in history 
+    if () {
+        var buttonEl = document.createElement("button");
+        buttonEl.classList.add("my-1", "button");
+        buttonEl.setAttribute("onclick", "queryCity()");
+        buttonEl.setAttribute("id", cityName);
+        buttonEl.textContent = cityName;
+    
+        searchHistoryList.append(buttonEl);
+        localStorage.setItem(cityName, dayArray);
+    }
+}
+
+// TODO: render search history upon refreshing so data persists
+function renderSearchHistory() {
+
+}
+
+//
+function getForecastAPI(queryURL) {
     fetch(queryURL)
     .then (function (response) {
         // Check response status 
@@ -52,43 +72,28 @@ function getWeatherAPI(queryURL) {
         return response.json();
     })
     .then (function (data) {
-        // Display the city, date, and icon depicting the current weather condition
-        cityName.text(data.name);
-        date.text("(" + currentDate.toLocaleDateString() + ")");
-        forecastIcon.addClass(getWeatherClass(data.weather[0].id));
+        // Display the city name
+        cityName.text(data.city.name);
 
-        // Display the current temperature, wind speed, and humidity
-        currentTemp.text("Temp: " + data.main.temp + '\u00B0' + 'F');
-        currentWind.text("Wind: " + data.wind.speed + " MPH");
-        currentHumidity.text("Humidity: " + data.main.humidity + "%");
-
-         // TODO: Add city into local storage and search history list
-         addCityToHistory(data.name);
-    });
-}
-
-function addCityToHistory(city) {
-    var buttonEl = document.createElement("button");
-    buttonEl.classList.add("my-1", "button");
-    buttonEl.setAttribute("onclick", "queryCity()");
-    buttonEl.setAttribute("content", city);
-    buttonEl.textContent = city;
-
-    searchHistory.append(buttonEl);
-}
-
-//
-function getForecastAPI(queryURL) {
-    fetch(queryURL)
-    .then (function (response) {
-        return response.json();
-    })
-    .then (function (data) {
         var dayArray = getForecastData(data.list);
-        dayArray.forEach((day) => {
-            futureForecast.append(createForecastCard(day));
+        displayCurrentForecast(dayArray[0]);
+        addToSearchHistory(data.city.name, dayArray);
+
+        dayArray.slice(1).forEach((day) => {
+            futureForecastDiv.append(createForecastCard(day));
         })
     });
+}
+
+function displayCurrentForecast(data) {
+    // Display the date and icon depicting the current weather condition
+    date.text("(" + currentDate.toLocaleDateString() + ")");
+    forecastIcon.addClass(getWeatherClass(data.weather[0].id));
+
+    // Display the current temperature, wind speed, and humidity
+    currentTemp.text("Temp: " + data.main.temp + '\u00B0' + 'F');
+    currentWind.text("Wind: " + data.wind.speed + " MPH");
+    currentHumidity.text("Humidity: " + data.main.humidity + "%");
 }
 
 //
@@ -137,16 +142,14 @@ function getForecastData(dataList) {
             result.push(dataList[i]);
         }
     }
-    result.shift();
+    console.log(result);
     return result;
 }
 
 //
 function queryCity() {
-    futureForecast.empty();
+    futureForecastDiv.empty();
     var city = queriedCity.val();
-    var queryWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey +"&units=imperial";
     var queryForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey +"&units=imperial";
-    getWeatherAPI(queryWeatherURL);
     getForecastAPI(queryForecastURL);
 }
