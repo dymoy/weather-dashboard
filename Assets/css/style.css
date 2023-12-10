@@ -8,15 +8,12 @@
     background-image: linear-gradient(var(--blue-color), whitesmoke);
 }
 
-main { 
-    padding: 0px 20px;
-}
-
 #search-container {
     border-bottom: 1px grey solid;
 }
 
-#city-content-container {
+#current-forecast {
+    height: 180px;
     border: 1px black solid;
 }
 
@@ -24,3 +21,18 @@ main {
     background-color: var(--blue-color);
     color: whitesmoke;
 }
+
+#current-forecast-header h3 ,
+#current-forecast-header i {
+    display:inline;
+}
+
+.forecast-card {
+    /* min-width: 180px; */
+    padding: 15px;
+}
+/* 
+.forecast-card p,
+.forecast-card i {
+    display: block;
+} */
