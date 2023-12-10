@@ -11,6 +11,7 @@ var currentWind = $("#wind");
 var currentHumidity = $("#humidity");
 
 var futureForecast = $("#future-forecast-container");
+var searchHistory = $("#search-history-container");
 
 // This function returns the class name to add to <i> to show the current weather condition
 function getWeatherClass(code) {
@@ -35,7 +36,7 @@ function getWeatherClass(code) {
         result = 'fa-cloud-bolt'
     }
 
-    return result;s
+    return result;
 }
 
 // 
@@ -51,8 +52,6 @@ function getWeatherAPI(queryURL) {
         return response.json();
     })
     .then (function (data) {
-        // console.log(data);
-
         // Display the city, date, and icon depicting the current weather condition
         cityName.text(data.name);
         date.text("(" + currentDate.toLocaleDateString() + ")");
@@ -62,19 +61,26 @@ function getWeatherAPI(queryURL) {
         currentTemp.text("Temp: " + data.main.temp + '\u00B0' + 'F');
         currentWind.text("Wind: " + data.wind.speed + " MPH");
         currentHumidity.text("Humidity: " + data.main.humidity + "%");
+
+         // TODO: Add city into local storage and search history list
+         addCityToHistory(data.name);
     });
+}
+
+function addCityToHistory(city) {
+    var buttonEl = document.createElement("button");
+    buttonEl.classList.add("my-1", "button");
+    buttonEl.setAttribute("onclick", "queryCity()");
+    buttonEl.setAttribute("content", city);
+    buttonEl.textContent = city;
+
+    searchHistory.append(buttonEl);
 }
 
 //
 function getForecastAPI(queryURL) {
     fetch(queryURL)
     .then (function (response) {
-        // Check response status 
-        if (response.status !== 200) {
-            // Query not found
-            alert("Invalid city entered.");
-            return;
-        } 
         return response.json();
     })
     .then (function (data) {
@@ -89,12 +95,11 @@ function getForecastAPI(queryURL) {
 function createForecastCard(day) {
     // Create the card div element
     var forecastCard = document.createElement("div");
-    forecastCard.classList.add("card", "forecast-card", "col-2", "px-2", "my-4");
+    forecastCard.classList.add("card", "forecast-card", "col-2", "px-2", "my-4", "text-white", "bg-secondary");
 
     // Append date element to the card 
     var cardDate = document.createElement("p");
-    var date = new Date(day.dt_txt.split(' ')[0]);
-    cardDate.innerHTML = date.toLocaleDateString();
+    cardDate.textContent = dayjs(day.dt_txt.split(' ')[0]).format('MM/DD/YYYY');
     forecastCard.appendChild(cardDate);
 
     // Append weather icon to the card
@@ -104,17 +109,17 @@ function createForecastCard(day) {
 
     // Append the temperature information to the card
     var temp = document.createElement("p");
-    temp.innerHTML = "Temp: " + day.main.temp + '\u00B0' + 'F';
+    temp.textContent = "Temp: " + day.main.temp + '\u00B0' + 'F';
     forecastCard.appendChild(temp);
 
     // Append the wind speed information to the card
     var wind = document.createElement("p");
-    wind.innerHTML = "Wind: " + day.wind.speed + " MPH";
+    wind.textContent = "Wind: " + day.wind.speed + " MPH";
     forecastCard.appendChild(wind);
 
     // Append the humidity information to the card
     var humidity = document.createElement("p");
-    humidity.innerHTML = "Humidity: " + day.main.humidity + "%";
+    humidity.textContent = "Humidity: " + day.main.humidity + "%";
     forecastCard.appendChild(humidity);
 
     return forecastCard;
@@ -123,14 +128,22 @@ function createForecastCard(day) {
 // 
 function getForecastData(dataList) {
     var result = [];
-    for (var i = 0; i < dataList.length; i+=8) {
-        result.push(dataList[i]);
+    var temp = [];
+
+    for (var i=0; i < dataList.length; i++) {
+        var parsedUnix = dayjs.unix(dataList[i].dt).format("MM/DD");
+        if (!temp.includes(parsedUnix)) {
+            temp.push(parsedUnix);
+            result.push(dataList[i]);
+        }
     }
+    result.shift();
     return result;
 }
 
 //
 function queryCity() {
+    futureForecast.empty();
     var city = queriedCity.val();
     var queryWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey +"&units=imperial";
     var queryForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey +"&units=imperial";

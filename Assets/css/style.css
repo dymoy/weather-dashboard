@@ -1,11 +1,12 @@
 :root {
-    --blue-color: #87a5e6;
+    --light-blue: #87a5e6;
+    --dark-blue:#4f77cc;
 }
 
 #title { 
     height: 80px;
     padding: 15px 0;
-    background-image: linear-gradient(var(--blue-color), whitesmoke);
+    background-image: linear-gradient(var(--light-blue), whitesmoke);
 }
 
 #search-container {
@@ -17,8 +18,10 @@
     border: 1px black solid;
 }
 
-#search-btn { 
-    background-color: var(--blue-color);
+#search-btn,
+.button { 
+    width: 100%;
+    background-color: var(--light-blue);
     color: whitesmoke;
 }
 
@@ -28,11 +31,5 @@
 }
 
 .forecast-card {
-    /* min-width: 180px; */
     padding: 15px;
 }
-/* 
-.forecast-card p,
-.forecast-card i {
-    display: block;
-} */
