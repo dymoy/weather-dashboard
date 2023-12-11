@@ -110,7 +110,16 @@ function displayCurrentForecast(data) {
 function createForecastCard(day) {
     // Create the card div element
     var forecastCard = document.createElement("div");
-    forecastCard.classList.add("card", "forecast-card", "col-2", "px-2", "my-4", "text-white", "bg-secondary", "align-items-center");
+    forecastCard.classList.add(
+        "card", 
+        "forecast-card", 
+        "col-lg-2", 
+        "px-2", 
+        "my-4", 
+        "text-white", 
+        "bg-secondary", 
+        "align-items-center"
+    );
 
     // Append date element to the card 
     var cardDate = document.createElement("p");
