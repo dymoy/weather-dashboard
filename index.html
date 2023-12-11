@@ -20,6 +20,11 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
 </head>
 <body>
     <header>
@@ -34,7 +39,7 @@
             </div>
             <div id="search-history-container">
                 <h2>Search History: </h2>
-                <ul id="search-history"></ul>
+                <ul id="search-history" class="px-0"></ul>
             </div>
         </aside>
         <div id="city-content-container" class="col-8 mx-2 my-4">
@@ -42,7 +47,7 @@
                 <header id="current-forecast-header" class="mt-2 mb-3">
                     <h3 id="city-name"></h2>
                     <h3 id="date"></h2>
-                    <i id="weather-icon" class="fa-solid" aria-hidden="true"></i>
+                    <i id="weather-icon" aria-hidden="true"></i>
                 </header>
                 <body id="current-forecast-body">
                     <p id="temp"></p>
