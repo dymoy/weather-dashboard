@@ -21,13 +21,13 @@
 #search-btn,
 .button { 
     width: 100%;
-    background-color: var(--light-blue);
+    background-color: var(--dark-blue);
     color: whitesmoke;
 }
 
 #current-forecast-header h3 ,
 #current-forecast-header i {
-    display:inline;
+    display: inline;
 }
 
 .forecast-card {
