@@ -7,7 +7,9 @@ Weather Dashboard
 The goal of this project is to create a webpage that utilizes server-side APIs so that users can query the current and 5-day forecast for a specific city. 
 
 This project collects weather data from the OpenWeather "5 day weather forecast" API. The documentation can be found at the link below: 
+
 https://openweathermap.org/forecast5
+
 
 The weather dashboard webpage has 4 main sections outlined below: 
 1. Form Input 
@@ -26,9 +28,13 @@ The weather dashboard webpage has 4 main sections outlined below:
 - Displays the 5-day forecast for the city in question. 
 - The user will be presented with the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed.
 
+
+
 ## Installation 
 
 N/A
+
+
 
 ## Usage 
 Use the following link to access the deployed webpage: 
@@ -36,19 +42,21 @@ https://dymoy.github.io/weather-dashboard/
 
 The source code is found in the root directory of the main branch. 
 
+
+
 ## Visuals 
 
 ### Screenshot of the web page on large sized screens (≥992px)
 
-!["Screenshot of the web page on large sized screens"](./Assets/images/weather_dashboard_lg_layout.html.png)
+!["Screenshot of the web page on large sized screens"](./Assets/images/weather_dashboard_lg_layout.png)
 
 ### Screenshot of the web page on medium sized screens (≥768px)
 
-!["Screenshot of the web page on medium sized screens"](./Assets/images/weather_dashboard_md_layout.html.png)
+!["Screenshot of the web page on medium sized screens"](./Assets/images/weather_dashboard_md_layout.png)
 
 ### Screenshot of the web page on small sized screens (<768px)
 
-!["Screenshot of the web page on small sized screens"](./Assets/images/weather_dashboard_sm_layout.html.png)
+!["Screenshot of the web page on small sized screens"](./Assets/images/weather_dashboard_sm_layout.png)
 
 ## Libraries, Frameworks, and Toolkits Used
 
@@ -67,6 +75,8 @@ The source code is found in the root directory of the main branch.
 4. Day.js 
 - Day.js library is used to display and format the date and time. 
 - Documentation: https://day.js.org/en/
+
+
 
 ## License 
 
