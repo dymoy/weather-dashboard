@@ -16,6 +16,7 @@
 #current-forecast {
     height: 180px;
     border: 1px black solid;
+    overflow-y: scroll;
 }
 
 #search-btn,

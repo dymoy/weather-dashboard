@@ -1,102 +1,73 @@
-# 06 Server-Side APIs: Weather Dashboard
+## Name 
 
-## Your Task
+Weather Dashboard 
 
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+## Description
 
-Use the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for cities. The base URL should look like the following: `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate.
+The goal of this project is to create a webpage that utilizes server-side APIs so that users can query the current and 5-day forecast for a specific city. 
 
-**Hint**: Using the 5 Day Weather Forecast API, you'll notice that you will need to pass in coordinates instead of just a city name. Using the OpenWeatherMap APIs, how could we retrieve geographical coordinates given a city name?
+This project collects weather data from the OpenWeather "5 day weather forecast" API. The documentation can be found at the link below: 
+https://openweathermap.org/forecast5
 
-You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
+The weather dashboard webpage has 4 main sections outlined below: 
+1. Form Input 
+- A search input box that allows users to query a city of their choice. 
+- Pressing the Search button will make an API call to collect the current and future conditions for the city entered. 
 
-## User Story
+2. Search History 
+- A list of previously queried cities. 
+- Clicking on a city under the Search History section will again present the user with the current and future conditions for that city
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
+3. Current Forecast 
+- Displays the current forecast for the city in question. 
+- The user will be presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed.
 
-## Acceptance Criteria
+4. 5-Day Forecast 
+- Displays the 5-day forecast for the city in question. 
+- The user will be presented with the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed.
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
+## Installation 
 
-## Mock-Up
+N/A
 
-The following image shows the web application's appearance and functionality:
+## Usage 
+Use the following link to access the deployed webpage: 
+https://dymoy.github.io/weather-dashboard/
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
+The source code is found in the root directory of the main branch. 
 
-## Grading Requirements
+## Visuals 
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+### Screenshot of the web page on large sized screens (≥992px)
 
-This Challenge is graded based on the following criteria: 
+!["Screenshot of the web page on large sized screens"](./Assets/images/weather_dashboard_lg_layout.html.png)
 
-### Technical Acceptance Criteria: 40%
+### Screenshot of the web page on medium sized screens (≥768px)
 
-* Satisfies all of the above acceptance criteria plus the following:
+!["Screenshot of the web page on medium sized screens"](./Assets/images/weather_dashboard_md_layout.html.png)
 
-    * Uses the OpenWeather API to retrieve weather data.
+### Screenshot of the web page on small sized screens (<768px)
 
-    * Uses `localStorage` to store persistent data.
+!["Screenshot of the web page on small sized screens"](./Assets/images/weather_dashboard_sm_layout.html.png)
 
-### Deployment: 32%
+## Libraries, Frameworks, and Toolkits Used
 
-* Application deployed at live URL.
+1. Bootstrap 
+- Bootstrap library is used to simplify HTML element styling 
+- Documentation: https://getbootstrap.com/
 
-* Application loads with no errors.
+2. Font Awesome 
+- Font Awesome icon toolkit was used to for icon representation of weather conditions
+- Documentation: https://fontawesome.com/docs
 
-* Application GitHub URL submitted.
+3. jQuery
+- jQuery library is used to simplify DOM traversal and manipulation
+- Documentation: https://jqueryui.com/demos/
 
-* GitHub repository that contains application code.
+4. Day.js 
+- Day.js library is used to display and format the date and time. 
+- Documentation: https://day.js.org/en/
 
-### Application Quality: 15%
+## License 
 
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the Challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
-
-- - -
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+Please refer to the license in the repo.
